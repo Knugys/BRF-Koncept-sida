@@ -1,13 +1,18 @@
-# Brf Solgårdarna Stigberget – konceptsida
+# Brf Solgårdarna Stigberget – förslag till ny webbplats
 
-Förslag på ny hemsida för Brf Solgårdarna Stigberget. Allt ligger i `index.html` (ingen byggprocess) – öppna filen i en webbläsare eller publicera med t.ex. GitHub Pages.
+Hela webbplatsen ligger i `index.html` och behöver ingen byggprocess. Öppna filen i en webbläsare eller publicera mappen, till exempel med GitHub Pages. Bilder ligger i `bilder/` och typsnitt i `typsnitt/`. Typsnitten ligger lokalt, så sidan hämtar ingenting från Google Fonts.
 
 ## Sidor
-Hem · Om föreningen · Medlemsinfo (trivselregler, andrahandsuthyrning, gästlägenhet) · Boka tvättid · Dokument (Google Drive) · Nyinflyttad · Frågor & svar · Kontakt
+Start · Felanmälan och kontakt · Regler och boende · Tvättstuga · Dokument · Ny i föreningen · Frågor och svar · Om föreningen
 
-## Att göra innan sidan visas skarpt
-1. **Bilder** – lägg bilderna från nuvarande sida i `bilder/` (se `bilder/README.md`).
-2. **Google Drive** – dela föreningens mapp som "Alla med länken kan visa" och fyll i `driveFolderId` i `CONFIG` längst ner i `index.html`. Mappen visas då inbäddad på sidan *Dokument*.
-3. **Tvättbokning** – fyll i `laundryUrl`, `laundryIos` och `laundryAndroid` i `CONFIG`. Sätt `laundryEmbed: true` om bokningssystemet tillåter att visas inbäddat.
-4. **Text** – rutor med streckad kant markerar text som ska kopieras från nuvarande sida (trivselregler, aktuellt, kontaktuppgifter till SBC/Boakt).
-5. **Nyinflyttad & FAQ** – innehåller exempeltext (lorem ipsum). FAQ-frågorna redigeras i listan `FAQ` i `index.html`.
+## Uppgifter som saknas
+Allt som saknas visas på sidan i en ruta med streckad kant och texten "Uppgift saknas" eller "Text saknas". Det gäller:
+
+- **Nyheter:** fylls i under `news` i `CONFIG`, längst ner i `index.html`.
+- **Akut felanmälan:** telefonnummer till jouren.
+- **Felanmälan till Boakt:** telefon, e-post eller länk.
+- **SBC:** kontaktuppgifter och länk till portalen.
+- **Trivselregler:** texten från nuvarande webbplats.
+- **Tvättbokning:** appens namn och länkar, fylls i under `laundry…` i `CONFIG`.
+- **Google Drive:** mappens ID, fylls i under `driveFolderId`. Vill du lyfta fram enskilda dokument, med namn och filformat, gör du det under `documents`.
+- **Ny i föreningen och Frågor och svar:** innehåller exempeltext (lorem ipsum) som ska ersättas.
