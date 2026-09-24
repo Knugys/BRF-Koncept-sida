@@ -1,11 +1,9 @@
 # Bilder
 
-Lägg bilderna från nuvarande sida här med följande filnamn. Saknas en bild visas en platshållare.
-
 | Fil | Används på |
 |---|---|
-| hem-1.jpg | Startsidan, stor bild |
-| galleri-1.jpg – galleri-3.jpg | Startsidan, bildgalleri |
-| om-1.jpg | Om föreningen |
-| gastlagenhet-1.jpg | Gästlägenhet Hjorthagsgatan 3D |
-| gastlagenhet-2.jpg | Gästlägenhet Älghagsgatan 4A |
+| husen-kvallsljus.jpg | Startsidan, stor bild |
+| garden-host.jpg, garden-vinter.jpg, berget.jpg | Startsidan, bildgalleri |
+| garden-sommar.jpg | Om föreningen |
+| gastlagenhet-1.jpg | Gästlägenhet Hjorthagsgatan 3D (saknas – visas som platshållare) |
+| gastlagenhet-2.jpg | Gästlägenhet Älghagsgatan 4A (saknas – visas som platshållare) |

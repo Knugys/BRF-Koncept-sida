@@ -107,7 +107,8 @@
   .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding: 56px 16px; }
   .hero .eyebrow { display: inline-block; background: var(--green-soft); color: var(--green); font-weight: 700; font-size: .85rem; padding: 4px 12px; border-radius: 99px; margin-bottom: 14px; }
   .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 52ch; }
-  .hero .photo { aspect-ratio: 4/3; }
+  .hero .photo { aspect-ratio: 4/5; max-height: 560px; width: 100%; }
+  @media (max-width: 820px) { .hero .photo { aspect-ratio: 4/3; } }
   @media (max-width: 820px) { .hero-grid { grid-template-columns: 1fr; padding: 32px 16px; } }
 
   .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
@@ -271,8 +272,8 @@
           <a class="btn ghost" href="#dokument">Föreningens dokument</a>
         </div>
       </div>
-      <figure class="photo" data-label="Bild från nuvarande sida (bilder/hem-1.jpg)" style="margin:0">
-        <img src="bilder/hem-1.jpg" alt="Solgårdarnas hus på Älghagsgatan">
+      <figure class="photo" data-label="bilder/husen-kvallsljus.jpg" style="margin:0">
+        <img src="bilder/husen-kvallsljus.jpg" alt="Föreningens röda och grå hus i kvällsljus, med berg och planteringar i förgrunden" style="object-position:50% 60%">
       </figure>
     </div>
   </div>
@@ -320,9 +321,9 @@
     <div class="wrap">
       <h2>Bilder från föreningen</h2>
       <div class="gallery">
-        <figure class="photo" data-label="bilder/galleri-1.jpg" style="margin:0"><img src="bilder/galleri-1.jpg" alt="Bild från föreningen" loading="lazy"></figure>
-        <figure class="photo" data-label="bilder/galleri-2.jpg" style="margin:0"><img src="bilder/galleri-2.jpg" alt="Bild från föreningen" loading="lazy"></figure>
-        <figure class="photo" data-label="bilder/galleri-3.jpg" style="margin:0"><img src="bilder/galleri-3.jpg" alt="Bild från föreningen" loading="lazy"></figure>
+        <figure class="photo" data-label="bilder/garden-host.jpg" style="margin:0"><img src="bilder/garden-host.jpg" alt="Planteringar och balkonger på gården en höstdag" loading="lazy"></figure>
+        <figure class="photo" data-label="bilder/garden-vinter.jpg" style="margin:0"><img src="bilder/garden-vinter.jpg" alt="Gården med sandlåda och berget en vårvinterdag" loading="lazy" style="object-position:50% 45%"></figure>
+        <figure class="photo" data-label="bilder/berget.jpg" style="margin:0"><img src="bilder/berget.jpg" alt="Närbild på berget mellan husen" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -369,7 +370,7 @@
           <dt>Teknisk förvaltning</dt><dd>Boakt, som även sköter fastighetsskötseln</dd>
           <dt>Organisationsnummer</dt><dd>769611-1108</dd>
         </dl>
-        <figure class="photo" data-label="bilder/om-1.jpg" style="margin:18px 0 0;aspect-ratio:16/9"><img src="bilder/om-1.jpg" alt="Gården" loading="lazy"></figure>
+        <figure class="photo" data-label="bilder/garden-sommar.jpg" style="margin:18px 0 0;aspect-ratio:16/9"><img src="bilder/garden-sommar.jpg" alt="Grönskande innergård på sommaren med barn som leker" loading="lazy"></figure>
       </div>
     </div>
   </section>
