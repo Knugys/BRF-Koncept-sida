@@ -6,565 +6,931 @@
 <title>Brf Solgårdarna Stigberget</title>
 <meta name="description" content="Bostadsrättsföreningen Solgårdarna Stigberget – 96 lägenheter i fyra hus på Älghagsgatan och Hjorthagsgatan vid Slottsskogen i Gamla Masthugget, Göteborg.">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="#efe5d8">
 <style>
-  /* Typsnitt lagras lokalt (ingen uppkoppling mot Google). Licens: SIL OFL, se typsnitt/. */
-  @font-face { font-family: "Source Sans 3"; font-weight: 400; font-display: swap; src: url(typsnitt/source-sans-3-latin-400-normal.woff2) format("woff2"); }
-  @font-face { font-family: "Source Sans 3"; font-weight: 600; font-display: swap; src: url(typsnitt/source-sans-3-latin-600-normal.woff2) format("woff2"); }
-  @font-face { font-family: "Source Sans 3"; font-weight: 700; font-display: swap; src: url(typsnitt/source-sans-3-latin-700-normal.woff2) format("woff2"); }
-  @font-face { font-family: "Source Serif 4"; font-weight: 600; font-display: swap; src: url(typsnitt/source-serif-4-latin-600-normal.woff2) format("woff2"); }
-  /* Färger hämtade från husen: ljus puts, mörk text och den rödbruna
-     fasad- och balkongfärgen som enda accent. */
+  /* Typsnitt lagras lokalt. Newsreader (rubriker) och Figtree (text). Licens: SIL OFL, se typsnitt/. */
+  @font-face { font-family: "Newsreader"; font-weight: 500; font-display: swap; src: url(typsnitt/newsreader-latin-500-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Newsreader"; font-weight: 500; font-style: italic; font-display: swap; src: url(typsnitt/newsreader-latin-500-italic.woff2) format("woff2"); }
+  @font-face { font-family: "Newsreader"; font-weight: 600; font-display: swap; src: url(typsnitt/newsreader-latin-600-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Figtree"; font-weight: 400; font-display: swap; src: url(typsnitt/figtree-latin-400-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Figtree"; font-weight: 500; font-display: swap; src: url(typsnitt/figtree-latin-500-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Figtree"; font-weight: 600; font-display: swap; src: url(typsnitt/figtree-latin-600-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Figtree"; font-weight: 700; font-display: swap; src: url(typsnitt/figtree-latin-700-normal.woff2) format("woff2"); }
+
+  /* Palett ur fotot av husen: varm puts, faluröd fasad, grått berg, växtlighet. */
   :root {
-    --bg: #f8f6f2;
-    --paper: #ffffff;
-    --text: #1d1f21;
-    --muted: #4b5055;
-    --line: #d9d4ca;
-    --line-strong: #a9a296;
-    --accent: #8c2f1f;
-    --accent-dark: #6d2215;
-    --accent-bg: #f5e9e4;
-    --focus: #1a5fb4;
-    --max: 1080px;
-    --gap: 24px;
+    --paper: #fbf8f3;       /* varmvit bas */
+    --putty: #efe5d8;       /* varm puts */
+    --putty-2: #e6d9c7;
+    --white: #ffffff;
+    --ink: #1f1b18;         /* kolsvart */
+    --ink-2: #4d4640;       /* sekundär text */
+    --brick: #9a3222;       /* tegelröd accent */
+    --brick-dark: #7a2518;
+    --brick-tint: #f6e4dd;
+    --stone: #676a64;       /* bergets grå */
+    --sage: #e4e8dc;        /* växtlighet, ljus */
+    --moss: #45603f;        /* växtlighet, mörk */
+    --line: #e2d6c6;
+    --line-strong: #bfb1a0;
+    --night: #211c19;       /* sidfot */
+
+    --r-sm: 8px; --r-md: 14px; --r-lg: 22px;
+    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 72px; --s9: 104px;
+    --max: 1200px;
+    --pad: 32px;
+    --shadow: 0 1px 2px rgba(31,27,24,.05), 0 14px 34px -14px rgba(31,27,24,.22);
+    --shadow-hover: 0 2px 4px rgba(31,27,24,.06), 0 22px 44px -16px rgba(31,27,24,.30);
   }
+  @media (max-width: 720px) { :root { --pad: 18px; } }
 
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 18px/1.6 "Source Sans 3", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 400 18px/1.62 "Figtree", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
-  h1, h2, h3 { line-height: 1.25; margin: 0 0 .5em; }
-  h1, h2 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; }
-  h1 { font-size: 1.9rem; }
-  h2 { font-size: 1.4rem; }
-  h3 { font-size: 1.1rem; font-weight: 700; }
-  @media (max-width: 600px) { h1 { font-size: 1.6rem; } h2 { font-size: 1.25rem; } }
-  p { margin: 0 0 1em; max-width: 68ch; }
-  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  a:hover { color: var(--accent-dark); text-decoration-thickness: 2px; }
-  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-  img { max-width: 100%; display: block; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-  @media (max-width: 600px) { .wrap { padding: 0 16px; } }
-  .muted { color: var(--muted); }
-  .small { font-size: .9rem; }
-  .skip { position: absolute; left: -9999px; top: 8px; background: var(--text); color: #fff; padding: 10px 14px; z-index: 100; }
+  h1, h2, h3, h4 { margin: 0; line-height: 1.15; }
+  h1, h2 { font-family: "Newsreader", Georgia, serif; font-weight: 500; letter-spacing: -.015em; text-wrap: balance; }
+  h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.3; }
+  p { margin: 0 0 1em; }
+  a { color: var(--brick); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+  a:hover { color: var(--brick-dark); text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+  img { display: block; max-width: 100%; }
+  svg.i { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+  .eyebrow { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brick); margin-bottom: var(--s3); }
+  .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 58ch; }
+  .muted { color: var(--ink-2); }
+  .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .skip { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: var(--r-sm); }
   .skip:focus { left: 8px; }
-  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  @media (prefers-reduced-motion: no-preference) {
+    .lift { transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
+  }
+
+  /* ---------- Knappar ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 12px 22px;
+    border-radius: 999px; font: 600 1rem/1.2 "Figtree", sans-serif; text-decoration: none; cursor: pointer;
+    background: var(--brick); color: #fff; border: 2px solid var(--brick);
+  }
+  .btn:hover { background: var(--brick-dark); border-color: var(--brick-dark); color: #fff; text-decoration: none; }
+  .btn.outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn.outline:hover { background: var(--ink); color: #fff; }
+  .btn svg.i { width: 20px; height: 20px; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: var(--s3); }
 
   /* ---------- Sidhuvud ---------- */
-  header.site { background: var(--paper); border-bottom: 1px solid var(--line); }
-  .masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
-  .name { text-decoration: none; color: var(--text); }
-  .name b { display: block; font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: 1.3rem; line-height: 1.2; }
-  .name span { display: block; color: var(--muted); font-size: .92rem; }
-  .masthead .contact-link { font-weight: 600; white-space: nowrap; }
-  nav.main { border-top: 1px solid var(--line); }
-  nav.main ul { list-style: none; margin: 0 0 0 -11px; padding: 0; display: flex; flex-wrap: wrap; }
-  nav.main a {
-    display: block; padding: 12px 11px; font-size: 1.05rem; color: var(--text); text-decoration: none; font-weight: 600;
-    border-bottom: 3px solid transparent;
+  header.site { background: var(--putty); position: relative; z-index: 20; }
+  .bar { display: flex; align-items: center; gap: var(--s6); min-height: 88px; }
+  .wordmark { display: inline-flex; flex-direction: column; text-decoration: none; color: var(--ink); line-height: 1; margin-right: auto; }
+  .wordmark:hover { color: var(--ink); }
+  .wm-name { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 1.85rem; letter-spacing: -.02em; }
+  .wm-sub { display: flex; align-items: center; gap: 10px; white-space: nowrap; margin-top: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
+  .wm-sub::before { content: ""; width: 22px; height: 2px; background: var(--brick); }
+
+  nav.primary > ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: var(--s1); }
+  nav.primary a, nav.primary .dd-btn {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 0 14px; border-radius: 999px;
+    font: 500 1.02rem/1 "Figtree", sans-serif; color: var(--ink); text-decoration: none; background: none; border: 0; cursor: pointer;
   }
-  nav.main a:hover { text-decoration: underline; }
-  nav.main a[aria-current="page"] { border-bottom-color: var(--accent); color: var(--accent); }
+  nav.primary a:hover, nav.primary .dd-btn:hover { background: rgba(31,27,24,.07); }
+  nav.primary > ul > li > a[aria-current="page"], nav.primary .dd-btn.current { background: var(--white); box-shadow: inset 0 0 0 1px var(--line-strong); font-weight: 600; }
+  .dd-btn svg.i { width: 18px; height: 18px; transition: transform .15s; }
+  .dd-btn[aria-expanded="true"] svg.i { transform: rotate(180deg); }
+  .dd { position: relative; }
+  .dd-panel {
+    position: absolute; top: calc(100% + 10px); left: -12px; width: 360px; padding: var(--s3);
+    background: var(--white); border-radius: var(--r-md); box-shadow: var(--shadow-hover); border: 1px solid var(--line);
+  }
+  .dd-panel[hidden] { display: none; }
+  .dd-panel ul { list-style: none; margin: 0; padding: 0; }
+  nav.primary .dd-panel a { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: var(--r-sm); min-height: 0; line-height: 1.35; }
+  .dd-panel a svg.i { color: var(--brick); margin-top: 1px; }
+  .dd-panel strong { display: block; font-weight: 600; }
+  .dd-panel small { display: block; color: var(--ink-2); font-size: .88rem; margin-top: 2px; }
+  nav.primary .dd-panel a:hover, nav.primary .dd-panel a[aria-current="page"] { background: var(--putty); }
+
+  .report-btn { min-height: 48px; padding: 10px 20px; }
   .menu-btn {
-    display: none; font: inherit; font-weight: 700; color: var(--text); background: var(--paper);
-    border: 1px solid var(--line-strong); border-radius: 6px; padding: 8px 14px; min-height: 44px; cursor: pointer;
+    display: none; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 999px;
+    font: 600 1rem "Figtree", sans-serif; color: var(--ink); background: var(--white); border: 1px solid var(--line-strong); cursor: pointer;
   }
-  @media (max-width: 600px) { .masthead .contact-link { display: none; } }
-  @media (max-width: 1100px) {
-    .menu-btn { display: inline-block; }
-    nav.main { display: none; }
-    nav.main.open { display: block; }
-    nav.main ul { flex-direction: column; margin: 0; padding: 4px 0 8px; }
-    nav.main li { border-bottom: 1px solid var(--line); }
-    nav.main li:last-child { border-bottom: 0; }
-    nav.main a { padding: 14px 0; border-bottom: 0; }
-    nav.main a[aria-current="page"] { border-left: 4px solid var(--accent); padding-left: 12px; }
+  .menu-btn svg.i { width: 20px; height: 20px; }
+  .mobile-panel { display: none; }
+
+  @media (max-width: 1020px) {
+    .bar { gap: var(--s3); min-height: 76px; }
+    nav.primary { display: none; }
+    .menu-btn { display: inline-flex; }
+    .wm-name { font-size: 1.55rem; }
+    .mobile-panel:not([hidden]) {
+      display: block; position: absolute; left: 0; right: 0; top: 100%;
+      background: var(--paper); border-top: 1px solid var(--line); box-shadow: 0 24px 40px -20px rgba(31,27,24,.35);
+      max-height: calc(100vh - 76px); overflow-y: auto;
+    }
+    .mobile-panel .wrap { padding-top: var(--s5); padding-bottom: var(--s6); display: grid; gap: var(--s5); }
+    .mobile-panel h2 { font: 700 .75rem/1 "Figtree", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--brick); margin-bottom: var(--s2); }
+    .mobile-panel ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .mobile-panel li { border-bottom: 1px solid var(--line); }
+    .mobile-panel a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; padding: 8px 2px; color: var(--ink); text-decoration: none; font-weight: 500; font-size: 1.08rem; }
+    .mobile-panel a svg.i { color: var(--stone); width: 20px; height: 20px; }
+    .mobile-panel a[aria-current="page"] { font-weight: 700; color: var(--brick); }
   }
+  @media (max-width: 520px) {
+    .report-btn .label-long { display: none; }
+    .bar { gap: var(--s2); }
+    .report-btn { padding: 10px 14px; gap: 8px; }
+    .menu-btn { padding: 0 12px; gap: 6px; }
+    .wm-name { font-size: 1.35rem; }
+    .wm-sub { font-size: .62rem; letter-spacing: .09em; gap: 7px; }
+    .wm-sub::before { width: 14px; }
+  }
+  @media (min-width: 521px) { .report-btn .label-short { display: none; } }
+  @media (max-width: 374px) { .menu-btn span { display: none; } .menu-btn { width: 48px; justify-content: center; padding: 0; } .wm-name { font-size: 1.25rem; } }
 
   /* ---------- Sidor ---------- */
-  main { padding-bottom: 48px; }
   main:focus, .page h1:focus { outline: none; }
   .page { display: none; }
   .page.active { display: block; }
-  .page-head { padding-top: 32px; padding-bottom: 8px; }
-  .page-head p { color: var(--muted); }
-  .block, .intro + .block { position: relative; padding-top: 24px; padding-bottom: 24px; }
-  .block::before { content: ""; position: absolute; top: 0; left: 20px; right: 20px; border-top: 1px solid var(--line); }
-  .page-head + .block::before { display: none; }
-  @media (max-width: 600px) { .block::before { left: 16px; right: 16px; } }
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .cols.wide-left { grid-template-columns: 3fr 2fr; }
-  @media (max-width: 860px) { .cols, .cols.wide-left { grid-template-columns: 1fr; gap: 28px; } }
 
-  /* Startsidans introduktion */
-  .intro { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: center; padding-top: 28px; padding-bottom: 28px; }
-  .intro p { margin-bottom: .6em; }
-  .intro figure { margin: 0; }
-  .intro img { width: 100%; height: 240px; object-fit: cover; object-position: 50% 62%; border-radius: 4px; }
+  /* ---------- Startsida: inledning ---------- */
+  .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); background: var(--putty); }
+  .hero-text {
+    padding: var(--s8) var(--s7) calc(var(--s9) + var(--s6)) max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad)));
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero h1 { font-size: clamp(2.7rem, 5.4vw, 4.6rem); line-height: .98; letter-spacing: -.03em; margin-bottom: var(--s5); }
+  .hero h1 em { font-style: italic; color: var(--brick); display: block; }
+  .hero .lead { font-size: 1.2rem; max-width: 34ch; margin-bottom: var(--s5); color: var(--ink); }
+  .addr { display: flex; flex-wrap: wrap; gap: 6px 18px; list-style: none; margin: 0; padding: var(--s4) 0 0; border-top: 1px solid var(--line-strong); font-size: .95rem; color: var(--ink-2); max-width: 30rem; }
+  .addr li { display: flex; align-items: center; gap: 8px; }
+  .addr svg.i { width: 18px; height: 18px; color: var(--brick); }
+  .hero-photo { margin: 0; min-height: 600px; position: relative; }
+  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 38% 58%; }
   @media (max-width: 860px) {
-    .intro { grid-template-columns: 1fr; gap: 16px; padding-top: 20px; padding-bottom: 20px; }
-    .intro img { height: 190px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; min-height: 0; height: 300px; }
+    .hero-text { padding: var(--s6) var(--pad) calc(var(--s8) + var(--s4)); }
+    .hero h1 { font-size: clamp(2.5rem, 11vw, 3.4rem); }
+    .hero .lead { font-size: 1.1rem; }
   }
-  figcaption { font-size: .88rem; color: var(--muted); margin-top: 6px; }
 
-  /* Länklistor (vanliga ärenden, dokument, undermenyer) */
-  .linklist { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .linklist li { border-bottom: 1px solid var(--line); }
-  .linklist a {
-    display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    padding: 13px 4px; text-decoration: none; color: var(--text); min-height: 48px;
+  /* Tre centrala ärenden, lagda över inledningens nederkant */
+  .tasks { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); margin-top: calc(-1 * var(--s9)); margin-bottom: 0; position: relative; z-index: 2; list-style: none; padding-top: 0; padding-bottom: 0; }
+  .tasks li { display: flex; }
+  .task {
+    display: flex; flex-direction: column; width: 100%; min-height: 250px; padding: var(--s6);
+    background: var(--white); color: var(--ink); text-decoration: none; border-radius: var(--r-lg);
+    box-shadow: var(--shadow); border: 1px solid var(--line);
   }
-  .linklist a:hover { background: var(--accent-bg); }
-  .linklist a:hover .t { text-decoration: underline; }
-  .linklist .t { font-weight: 700; color: var(--accent); display: block; }
-  .linklist .d { display: block; color: var(--muted); font-size: .95rem; }
-  .linklist .arrow { color: var(--accent); font-weight: 700; flex: none; }
-  .fmt { font-size: .8rem; font-weight: 700; border: 1px solid var(--line-strong); border-radius: 3px; padding: 1px 6px; color: var(--muted); flex: none; }
-
-  /* Nyheter */
-  .news { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .news li { padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .news time { display: block; font-size: .9rem; color: var(--muted); }
-  .news h3 { margin: 2px 0 4px; }
-
-  /* Knappar */
-  .btn {
-    display: inline-block; padding: 11px 20px; min-height: 48px; border-radius: 6px; font-weight: 700;
-    text-decoration: none; background: var(--accent); color: #fff; border: 2px solid var(--accent);
+  .task:hover { color: var(--ink); text-decoration: none; transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .task .ico { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--brick-tint); color: var(--brick); margin-bottom: var(--s5); }
+  .task .ico svg.i { width: 28px; height: 28px; }
+  .task h2 { font-size: 1.65rem; margin-bottom: var(--s2); }
+  .task p { color: var(--ink-2); margin-bottom: var(--s5); }
+  .task .go { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--brick); }
+  .task .go svg.i { width: 20px; height: 20px; transition: transform .18s; }
+  .task:hover .go { text-decoration: underline; text-underline-offset: .2em; }
+  .task:hover .go svg.i { transform: translateX(3px); }
+  .task.primary { background: var(--brick); border-color: var(--brick); color: #fff; }
+  .task.primary:hover { background: var(--brick-dark); color: #fff; }
+  .task.primary .ico { background: rgba(255,255,255,.14); color: #fff; }
+  .task.primary p, .task.primary .go { color: #fff; }
+  @media (max-width: 860px) {
+    .tasks { grid-template-columns: 1fr; gap: var(--s3); margin-top: calc(-1 * var(--s7)); }
+    .task { min-height: 0; padding: var(--s5); display: grid; grid-template-columns: 52px 1fr; column-gap: var(--s4); align-items: start; border-radius: var(--r-md); }
+    .task .ico { width: 52px; height: 52px; margin: 0; grid-row: span 3; }
+    .task h2 { font-size: 1.4rem; }
+    .task p { margin-bottom: var(--s2); }
   }
-  .btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; text-decoration: underline; }
-  .btn.secondary { background: var(--paper); color: var(--accent); }
-  .btn.secondary:hover { background: var(--accent-bg); color: var(--accent-dark); }
-  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 16px; }
 
-  /* Fakta */
-  dl.facts { display: grid; grid-template-columns: 11em 1fr; margin: 0; border-top: 1px solid var(--line); }
-  dl.facts dt, dl.facts dd { padding: 10px 0; border-bottom: 1px solid var(--line); margin: 0; }
-  dl.facts dt { font-weight: 700; padding-right: 16px; }
-  @media (max-width: 520px) {
-    dl.facts { grid-template-columns: 1fr; }
-    dl.facts dt { border-bottom: 0; padding-bottom: 0; }
-    dl.facts dd { padding-top: 2px; }
+  /* Aktuellt (visas bara när det finns nyheter) */
+  .news-sec { padding-top: var(--s8); }
+  .h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+  .news { list-style: none; margin: var(--s5) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); }
+  .news li { border-top: 3px solid var(--brick); padding-top: var(--s4); }
+  .news time { font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brick); }
+  .news h3 { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: 1.4rem; margin: 6px 0 8px; }
+  .news p { color: var(--ink-2); }
+  @media (max-width: 860px) { .news { grid-template-columns: 1fr; } }
+
+  /* Boende – kompakt samlad information */
+  .living { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--s7); padding-top: var(--s9); padding-bottom: var(--s9); }
+  .living-intro p { color: var(--ink-2); max-width: 32ch; margin-top: var(--s4); }
+  .living-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--s6); }
+  .living-list li { border-top: 1px solid var(--line-strong); }
+  .living-list a { display: grid; grid-template-columns: 28px 1fr 20px; gap: var(--s4); align-items: start; padding: 20px 4px; color: var(--ink); text-decoration: none; border-radius: var(--r-sm); }
+  .living-list a > svg.i:first-child { color: var(--brick); margin-top: 1px; }
+  .living-list a > svg.i:last-child { width: 20px; height: 20px; color: var(--stone); margin-top: 3px; transition: transform .18s, color .18s; }
+  .living-list strong { display: block; font-weight: 600; font-size: 1.08rem; }
+  .living-list small { display: block; color: var(--ink-2); font-size: .95rem; margin-top: 2px; }
+  .living-list a:hover strong { text-decoration: underline; text-underline-offset: .2em; }
+  .living-list a:hover > svg.i:last-child { transform: translateX(3px); color: var(--brick); }
+  @media (max-width: 860px) {
+    .living { grid-template-columns: 1fr; gap: var(--s5); padding-top: var(--s8); padding-bottom: var(--s8); }
+    .living-list { grid-template-columns: 1fr; }
   }
-  ul.plain { margin: 0 0 1em; padding-left: 1.2em; }
-  ul.plain li { margin-bottom: 4px; }
 
-  /* Markering av innehåll som ännu saknas */
-  .missing {
-    border: 1px dashed var(--line-strong); background: var(--paper); padding: 12px 16px; border-radius: 4px;
-    color: var(--muted); font-size: .95rem; max-width: 68ch; margin: 0 0 1em;
+  /* Gården och gemenskapen */
+  .community { background: var(--sage); }
+  .community .wrap { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s8); align-items: center; padding-top: var(--s8); padding-bottom: var(--s8); }
+  .community figure { margin: 0; }
+  .community img { width: 100%; aspect-ratio: 5/4; object-fit: cover; border-radius: var(--r-lg); }
+  .community .eyebrow { color: var(--moss); }
+  .community h2 { margin-bottom: var(--s4); }
+  .community p { color: var(--ink-2); }
+  .amenities { list-style: none; margin: var(--s5) 0 0; padding: var(--s5) 0 0; border-top: 1px solid rgba(69,96,63,.3); display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3) var(--s5); }
+  .amenities li { display: flex; gap: 10px; align-items: center; font-weight: 500; }
+  .amenities li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--moss); flex: none; }
+  @media (max-width: 860px) {
+    .community .wrap { grid-template-columns: 1fr; gap: var(--s6); padding-top: var(--s7); padding-bottom: var(--s7); }
   }
-  .missing strong { color: var(--text); }
-  .notice { border-left: 4px solid var(--accent); background: var(--accent-bg); padding: 12px 16px; max-width: 68ch; margin: 0 0 1em; }
-  .notice p:last-child { margin-bottom: 0; }
+  @media (max-width: 420px) { .amenities { grid-template-columns: 1fr; } }
 
-  /* Bilder */
-  .photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0; }
-  .photos figure { margin: 0; }
-  .photos img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; background: var(--line); }
-  @media (max-width: 700px) { .photos { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 420px) { .photos { grid-template-columns: 1fr; } }
+  /* ---------- Undersidor ---------- */
+  .page-hero { background: var(--putty); }
+  .page-hero .wrap { padding-top: var(--s7); padding-bottom: var(--s7); }
+  .crumbs { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--s4); padding: 0; font-size: .92rem; color: var(--ink-2); }
+  .crumbs li + li::before { content: "/"; margin-right: 8px; color: var(--line-strong); }
+  .page-hero h1 { font-size: clamp(2.3rem, 4.6vw, 3.4rem); letter-spacing: -.025em; margin-bottom: var(--s3); }
+  .page-hero .lead { margin: 0; }
+  .content { padding-top: var(--s7); padding-bottom: var(--s8); }
+  .with-aside { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--s8); align-items: start; }
+  .toc { position: sticky; top: var(--s5); }
+  .toc h2 { font: 700 .75rem/1 "Figtree", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin-bottom: var(--s3); }
+  .toc ul { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .toc a { display: block; padding: 8px 0 8px 16px; margin-left: -2px; border-left: 2px solid transparent; color: var(--ink); text-decoration: none; font-weight: 500; }
+  .toc a:hover { border-left-color: var(--brick); color: var(--brick); }
+  @media (max-width: 860px) {
+    .with-aside { grid-template-columns: 1fr; gap: var(--s5); }
+    .toc { position: static; }
+    .toc ul { display: flex; flex-wrap: wrap; gap: 8px; border: 0; }
+    .toc a { border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 16px; margin: 0; background: var(--white); }
+  }
+  .prose { max-width: 720px; }
+  .prose > section + section { margin-top: var(--s8); }
+  .prose h2 { font-size: clamp(1.7rem, 3vw, 2.1rem); margin-bottom: var(--s4); }
+  .prose h2::before { content: ""; display: block; width: 36px; height: 3px; background: var(--brick); margin-bottom: var(--s4); }
+  .prose h3 { margin-bottom: var(--s2); }
+  .prose ul { padding-left: 1.2em; margin: 0 0 1em; }
+  .prose li { margin-bottom: 6px; }
 
-  /* Kontaktvägar */
-  .route { display: grid; grid-template-columns: 14em 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
-  .route:first-of-type { border-top: 1px solid var(--line); }
-  .route h2 { font-size: 1.15rem; margin: 0; }
-  .route .label { display: inline-block; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 4px; }
-  .route.urgent .label { color: var(--accent); }
-  .route p { margin-bottom: .5em; }
-  @media (max-width: 700px) { .route { grid-template-columns: 1fr; gap: 6px; } }
+  .callout { display: flex; gap: var(--s4); background: var(--brick-tint); border-radius: var(--r-md); padding: var(--s5); margin: var(--s5) 0 0; }
+  .callout svg.i { color: var(--brick); margin-top: 2px; }
+  .callout p { margin: 0; }
 
-  /* Inbäddningar */
-  .embed { border: 1px solid var(--line); background: var(--paper); }
-  .embed iframe { width: 100%; height: 520px; border: 0; display: block; }
-  @media (max-width: 600px) { .embed iframe { height: 420px; } }
+  .spec { display: grid; grid-template-columns: repeat(3, 1fr); margin: var(--s5) 0; border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--white); overflow: hidden; }
+  .spec div { padding: var(--s4) var(--s5); }
+  .spec div + div { border-left: 1px solid var(--line); }
+  .spec dt { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .spec dd { margin: 4px 0 0; font-family: "Newsreader", Georgia, serif; font-size: 1.35rem; line-height: 1.25; }
+  @media (max-width: 640px) { .spec { grid-template-columns: 1fr; } .spec div + div { border-left: 0; border-top: 1px solid var(--line); } }
+  .rooms { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  .room { background: var(--putty); border-radius: var(--r-md); padding: var(--s5); }
+  .room .eyebrow { margin-bottom: 6px; }
+  .room ul { margin: var(--s3) 0 0; }
+  @media (max-width: 640px) { .rooms { grid-template-columns: 1fr; } }
+
+  /* Kontakt */
+  .contacts { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s5); }
+  .contact { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s6); box-shadow: var(--shadow); }
+  .contact.first { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s6); border-top: 6px solid var(--brick); }
+  .contact.first.solo { grid-template-columns: minmax(0, 1fr); }
+  .contact.first.solo p { max-width: 62ch; }
+  .contact h2 { font-size: 1.75rem; margin-bottom: var(--s3); }
+  .contact p { color: var(--ink-2); }
+  .contact p:last-child { margin-bottom: 0; }
+  .contact .ways { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); align-content: start; }
+  .contact .ways a {
+    display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 12px 18px; border-radius: var(--r-md);
+    background: var(--putty); color: var(--ink); text-decoration: none; font-weight: 600;
+  }
+  .contact .ways a:hover { background: var(--putty-2); }
+  .contact .ways a:hover span { text-decoration: underline; text-underline-offset: .2em; }
+  .contact .ways svg.i { color: var(--brick); }
+  .contact .ways small { display: block; font-weight: 400; color: var(--ink-2); font-size: .88rem; }
+  .contact.quiet { background: var(--putty); box-shadow: none; border-color: transparent; }
+  @media (max-width: 860px) {
+    .contacts { grid-template-columns: 1fr; }
+    .contact.first { grid-template-columns: 1fr; gap: var(--s4); }
+    .contact { padding: var(--s5); }
+  }
+
+  /* Dokument och tvätt */
+  .panel { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s6); box-shadow: var(--shadow); }
+  .panel h2 { font-size: 1.8rem; margin-bottom: var(--s3); }
+  .embed { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--line); background: var(--white); margin-top: var(--s5); }
+  .embed iframe { display: block; width: 100%; height: 560px; border: 0; }
+  .docs { list-style: none; margin: 0 0 var(--s5); padding: 0; border-top: 1px solid var(--line-strong); }
+  .docs li { border-bottom: 1px solid var(--line); }
+  .docs a { display: flex; align-items: center; gap: var(--s4); padding: 16px 4px; color: var(--ink); text-decoration: none; font-weight: 600; }
+  .docs a:hover .t { text-decoration: underline; }
+  .docs svg.i { color: var(--brick); }
+  .fmt { margin-left: auto; font-size: .75rem; font-weight: 700; letter-spacing: .08em; padding: 3px 8px; border-radius: 6px; background: var(--putty); color: var(--ink-2); }
+  .side-note { background: var(--putty); border-radius: var(--r-md); padding: var(--s5); }
+  .side-note h2 { font-size: 1.35rem; margin-bottom: var(--s2); }
+  .side-note p:last-child { margin-bottom: 0; }
+  .two { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--s6); align-items: start; }
+  @media (max-width: 860px) { .two { grid-template-columns: 1fr; } .panel { padding: var(--s5); } }
+
+  /* Ny i föreningen */
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; gap: var(--s3); }
+  .steps li { counter-increment: s; }
+  .steps label { display: grid; grid-template-columns: 44px 1fr 28px; gap: var(--s4); align-items: center; padding: var(--s4) var(--s5); background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); cursor: pointer; }
+  .steps label:hover { border-color: var(--line-strong); }
+  .steps label::before { content: counter(s); width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--putty); font-family: "Newsreader", Georgia, serif; font-size: 1.3rem; }
+  .steps input { width: 24px; height: 24px; accent-color: var(--moss); justify-self: end; cursor: pointer; }
+  .steps strong { display: block; }
+  .steps span.d { color: var(--ink-2); font-size: .95rem; }
+  .steps li:has(input:checked) label::before { content: "✓"; background: var(--moss); color: #fff; font-family: "Figtree", sans-serif; font-size: 1.1rem; }
+  .steps li:has(input:checked) label > span { opacity: .65; }
 
   /* Frågor och svar */
-  .field label { display: block; font-weight: 700; margin-bottom: 4px; }
-  .field input {
-    width: 100%; max-width: 480px; font: inherit; padding: 10px 12px; min-height: 48px;
-    border: 1px solid var(--line-strong); border-radius: 6px; background: var(--paper); color: var(--text);
-  }
-  fieldset.filter { border: 0; padding: 0; margin: 16px 0 20px; }
-  fieldset.filter legend { font-weight: 700; margin-bottom: 6px; padding: 0; }
-  .filter-opts { display: flex; flex-wrap: wrap; gap: 8px; }
-  .filter-opts button {
-    font: inherit; font-size: .95rem; padding: 8px 14px; min-height: 44px; cursor: pointer;
-    border: 1px solid var(--line-strong); border-radius: 6px; background: var(--paper); color: var(--text);
-  }
-  .filter-opts button[aria-pressed="true"] { background: var(--text); color: #fff; border-color: var(--text); font-weight: 700; }
-  .faq { border-top: 1px solid var(--line); max-width: 760px; }
+  .faq-tools { display: grid; gap: var(--s4); margin-bottom: var(--s5); max-width: 760px; }
+  .field label { display: block; font-weight: 600; margin-bottom: 6px; }
+  .search { position: relative; }
+  .search svg.i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--stone); pointer-events: none; }
+  .search input { width: 100%; min-height: 54px; padding: 12px 16px 12px 50px; font: inherit; color: var(--ink); background: var(--white); border: 1.5px solid var(--line-strong); border-radius: 999px; }
+  fieldset.filter { border: 0; margin: 0; padding: 0; }
+  fieldset.filter legend { font-weight: 600; padding: 0; margin-bottom: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips button { min-height: 44px; padding: 0 18px; border-radius: 999px; font: 500 .98rem "Figtree", sans-serif; background: var(--white); color: var(--ink); border: 1px solid var(--line-strong); cursor: pointer; }
+  .chips button:hover { border-color: var(--ink); }
+  .chips button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .faq { max-width: 760px; border-top: 1px solid var(--line-strong); }
   .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary { cursor: pointer; padding: 14px 0; font-weight: 700; display: flex; gap: 12px; justify-content: space-between; min-height: 48px; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: var(--s4); padding: 20px 0; min-height: 56px; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::marker { content: ""; }
-  .faq summary .sign { flex: none; color: var(--accent); font-weight: 400; font-size: .95rem; }
-  .faq summary .sign::before { content: "Visa svar"; }
-  .faq details[open] summary .sign::before { content: "Dölj"; }
-  .faq .cat { display: block; font-weight: 400; font-size: .85rem; color: var(--muted); }
-  .faq .answer { padding: 0 0 16px; }
+  .faq summary strong { display: block; font-weight: 600; font-size: 1.08rem; }
+  .faq summary small { display: block; color: var(--ink-2); font-size: .85rem; margin-top: 2px; }
+  .faq .tog { flex: none; display: inline-flex; align-items: center; gap: 6px; font-size: .92rem; font-weight: 600; color: var(--brick); }
+  .faq .tog::before { content: "Visa svar"; }
+  .faq details[open] .tog::before { content: "Dölj svar"; }
+  .faq .tog svg.i { width: 18px; height: 18px; transition: transform .15s; }
+  .faq details[open] .tog svg.i { transform: rotate(180deg); }
+  .faq summary:hover strong { text-decoration: underline; text-underline-offset: .2em; }
+  .faq .answer { padding: 0 0 20px; color: var(--ink-2); max-width: 64ch; }
+  @media (max-width: 520px) { .faq .tog::before { content: "Visa"; } .faq details[open] .tog::before { content: "Dölj"; } }
 
-  /* Checklista */
-  .checklist { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); max-width: 760px; }
-  .checklist li { border-bottom: 1px solid var(--line); }
-  .checklist label { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; cursor: pointer; }
-  .checklist input { width: 22px; height: 22px; margin-top: 3px; flex: none; accent-color: var(--accent); }
+  /* Om föreningen */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); margin: 0 0 var(--s8); }
+  .facts div { padding: var(--s5) var(--s5) var(--s5) 0; }
+  .facts div + div { padding-left: var(--s5); border-left: 1px solid var(--line); }
+  .facts dt { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .facts dd { margin: 6px 0 0; font-family: "Newsreader", Georgia, serif; font-size: 1.6rem; line-height: 1.25; }
+  @media (max-width: 860px) {
+    .facts { grid-template-columns: 1fr 1fr; }
+    .facts div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .facts dd { font-size: 1.35rem; }
+  }
+  @media (max-width: 420px) {
+    .facts div:nth-child(2) { border-left: 0; }
+    .facts div:nth-child(2n) { padding-left: var(--s4); border-left: 1px solid var(--line); }
+    .facts div:nth-child(4) { grid-column: 1 / -1; border-left: 0; padding-left: 0; }
+    .facts div:nth-child(3) { grid-column: 1 / -1; }
+  }
+  .about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s8); align-items: start; }
+  .about .h2 { margin-bottom: var(--s5); }
+  @media (max-width: 860px) { .about { grid-template-columns: 1fr; gap: var(--s6); } }
+  .gallery { display: grid; grid-template-columns: 3fr 2fr; gap: var(--s4); margin: 0; }
+  .gallery figure { margin: 0; }
+  .gallery figure:first-child { grid-row: span 2; display: flex; flex-direction: column; }
+  .gallery figure:first-child img { flex: 1; min-height: 420px; }
+  .gallery img { width: 100%; object-fit: cover; border-radius: var(--r-md); }
+  .gallery figure:not(:first-child) img { aspect-ratio: 4/3; }
+  .gallery figcaption { font-size: .88rem; color: var(--ink-2); margin-top: 6px; }
+  @media (max-width: 640px) {
+    .gallery { grid-template-columns: 1fr; }
+    .gallery figure:first-child { grid-row: auto; }
+    .gallery figure:first-child img { min-height: 0; aspect-ratio: 4/5; flex: none; }
+  }
+  dl.list { margin: 0; }
+  dl.list div { display: grid; grid-template-columns: 11rem 1fr; gap: var(--s4); padding: 14px 0; border-bottom: 1px solid var(--line); }
+  dl.list div:first-child { border-top: 1px solid var(--line-strong); }
+  dl.list dt { font-weight: 600; }
+  dl.list dd { margin: 0; color: var(--ink-2); }
+  @media (max-width: 520px) { dl.list div { grid-template-columns: 1fr; gap: 2px; } }
 
-  /* Sidfot */
-  footer.site { background: var(--paper); border-top: 1px solid var(--line); padding: 28px 0; font-size: .95rem; }
-  footer .cols { gap: 24px; grid-template-columns: 2fr 1fr 1fr; }
-  footer h2 { font-family: inherit; font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-  footer ul { list-style: none; margin: 0; padding: 0; }
-  footer li { margin-bottom: 4px; }
-  footer p { margin-bottom: .4em; }
-  @media (max-width: 860px) { footer .cols { grid-template-columns: 1fr; } }
+  /* ---------- Sidfot ---------- */
+  footer.site { background: var(--night); color: #e9e0d4; }
+  footer .top { display: grid; grid-template-columns: minmax(0, 4fr) repeat(3, minmax(0, 2fr)); gap: var(--s6); padding-top: var(--s8); padding-bottom: var(--s7); }
+  footer .wordmark { color: #fff; }
+  footer .wordmark:hover { color: #fff; }
+  footer .wm-sub { color: #cfc4b6; }
+  footer .wm-sub::before { background: #e07a62; }
+  footer address { font-style: normal; margin-top: var(--s5); color: #d8cec1; line-height: 1.7; }
+  footer h2 { font: 700 .75rem/1 "Figtree", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #cfc4b6; margin-bottom: var(--s4); }
+  footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  footer a { color: #fff; text-decoration-color: rgba(255,255,255,.4); }
+  footer a:hover { color: #fff; text-decoration-color: #fff; }
+  footer :focus-visible { outline-color: #fff; }
+  footer .report { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+  footer .report svg.i { width: 20px; height: 20px; color: #e07a62; }
+  footer .bottom { border-top: 1px solid rgba(255,255,255,.14); padding-top: var(--s4); padding-bottom: var(--s5); font-size: .9rem; color: #bdb2a4; display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s3); }
+  @media (max-width: 860px) { footer .top { grid-template-columns: 1fr 1fr; } footer .brand { grid-column: 1 / -1; } }
+  @media (max-width: 460px) { footer .top { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.3 5.3l-5.9 5.9a1.8 1.8 0 0 0 2.5 2.5l5.9-5.9a4 4 0 0 0 5.3-5.3l-2.5 2.5-2.4-.4-.4-2.4z"/></symbol>
+  <symbol id="i-washer" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><circle cx="12" cy="13.5" r="4.5"/><path d="M7.5 6h.01M10.5 6h3"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6H9l2 2h8.5A1.5 1.5 0 0 1 21 9.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-rules" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5M7 11.5h.01"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m10.9 12.1 8.6-8.6M16 7l2.5 2.5M13.5 9.5l2 2"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 8 12 4l8.5 4v8L12 20l-8.5-4z"/><path d="M3.5 8 12 12l8.5-4M12 12v8"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8 1c0 1.7-2.4 2.1-2.4 3.6M12 17h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3l1.5 4-2 1.3a11 11 0 0 0 5.7 5.7l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+</svg>
+
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
 
 <header class="site">
-  <div class="wrap masthead">
-    <a class="name" href="#start">
-      <b>Brf Solgårdarna Stigberget</b>
-      <span>Älghagsgatan och Hjorthagsgatan, Gamla Masthugget, Göteborg</span>
+  <div class="wrap bar">
+    <a class="wordmark" href="#start" aria-label="Brf Solgårdarna Stigberget, till startsidan">
+      <span class="wm-name">Solgårdarna</span>
+      <span class="wm-sub">Brf Stigberget</span>
     </a>
-    <a class="contact-link" href="#kontakt">Felanmälan och kontakt</a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Meny</button>
+
+    <nav class="primary" aria-label="Huvudmeny">
+      <ul>
+        <li class="dd">
+          <button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-boende">Boende <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="dd-panel" id="dd-boende" hidden>
+            <ul>
+              <li><a href="#boende"><svg class="i" aria-hidden="true"><use href="#i-rules"/></svg><span><strong>Regler och boende</strong><small>Trivselregler och gemensamma utrymmen</small></span></a></li>
+              <li><a href="#boende/gastlagenheter"><svg class="i" aria-hidden="true"><use href="#i-bed"/></svg><span><strong>Gästlägenheter</strong><small>Två lägenheter, 350 kr per natt</small></span></a></li>
+              <li><a href="#boende/andrahand"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg><span><strong>Andrahandsuthyrning</strong><small>Regler och ansökan</small></span></a></li>
+              <li><a href="#ny"><svg class="i" aria-hidden="true"><use href="#i-box"/></svg><span><strong>Ny i föreningen</strong><small>Bra att veta vid inflyttning</small></span></a></li>
+              <li><a href="#fragor"><svg class="i" aria-hidden="true"><use href="#i-help"/></svg><span><strong>Frågor och svar</strong><small>Vanliga frågor från boende</small></span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#tvattstuga">Tvättstuga</a></li>
+        <li><a href="#dokument">Dokument</a></li>
+        <li><a href="#om">Om föreningen</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn report-btn" href="#kontakt"><svg class="i" aria-hidden="true"><use href="#i-tool"/></svg><span class="label-long">Felanmälan och kontakt</span><span class="label-short">Felanmälan</span></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobilePanel" aria-label="Meny"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg><span>Meny</span></button>
   </div>
-  <nav class="main wrap" id="nav" aria-label="Huvudmeny">
-    <ul>
-      <li><a href="#start">Start</a></li>
-      <li><a href="#kontakt">Felanmälan och kontakt</a></li>
-      <li><a href="#boende">Regler och boende</a></li>
-      <li><a href="#tvattstuga">Tvättstuga</a></li>
-      <li><a href="#dokument">Dokument</a></li>
-      <li><a href="#ny">Ny i föreningen</a></li>
-      <li><a href="#fragor">Frågor och svar</a></li>
-      <li><a href="#om">Om föreningen</a></li>
-    </ul>
-  </nav>
+
+  <div class="mobile-panel" id="mobilePanel" hidden>
+    <nav class="wrap" aria-label="Meny">
+      <div>
+        <h2>Vanliga ärenden</h2>
+        <ul>
+          <li><a href="#kontakt">Felanmälan och kontakt <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#tvattstuga">Tvättstuga <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#dokument">Dokument <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Boende</h2>
+        <ul>
+          <li><a href="#boende">Regler och boende <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#boende/gastlagenheter">Gästlägenheter <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#boende/andrahand">Andrahandsuthyrning <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#ny">Ny i föreningen <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#fragor">Frågor och svar <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Föreningen</h2>
+        <ul>
+          <li><a href="#om">Om föreningen <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#start">Startsidan <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <main id="innehall" tabindex="-1">
 
 <!-- ======================= START ======================= -->
 <div class="page" id="page-start" data-title="">
-  <div class="wrap intro">
-    <div>
-      <h1>Brf Solgårdarna Stigberget</h1>
-      <p>Bostadsrättsförening med 96 lägenheter i fyra hus på Älghagsgatan 2 och 4 samt Hjorthagsgatan 3 och 5, vid Slottsskogens kant i Gamla Masthugget.</p>
-      <p class="muted">Här finns information om föreningen, aktuella projekt och kontaktuppgifter.</p>
+  <section class="hero" aria-labelledby="h-start">
+    <div class="hero-text">
+      <span class="eyebrow">Bostadsrättsförening i Gamla Masthugget</span>
+      <h1 id="h-start">Solgårdarna <em>Stigberget</em></h1>
+      <p class="lead">96 lägenheter i fyra hus vid Slottsskogens kant i Göteborg.</p>
+      <ul class="addr">
+        <li><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Älghagsgatan 2 och 4</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Hjorthagsgatan 3 och 5</li>
+      </ul>
     </div>
-    <figure>
-      <img src="bilder/husen-kvallsljus.jpg" alt="Föreningens röda och grå hus sedda från gården, med berg och planteringar i förgrunden.">
+    <figure class="hero-photo">
+      <img src="bilder/husen-kvallsljus.jpg" alt="Föreningens röda och grå hus i kvällsljus, sedda från gården med berg och planteringar i förgrunden.">
     </figure>
-  </div>
+  </section>
 
-  <div class="wrap block">
-    <div class="cols wide-left">
-      <section aria-labelledby="h-arenden">
-        <h2 id="h-arenden">Vanliga ärenden</h2>
-        <ul class="linklist">
-          <li><a href="#kontakt"><span><span class="t">Felanmälan och kontakt</span><span class="d">Fel i lägenheten eller huset, frågor till styrelsen</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li><a href="#tvattstuga"><span><span class="t">Boka tvättstugan</span><span class="d">Bokning av tvättid</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li><a href="#dokument"><span><span class="t">Dokument</span><span class="d">Föreningens filer i Google Drive</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li><a href="#boende/trivselregler"><span><span class="t">Trivselregler</span><span class="d">Gemensamma regler för alla boende</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li><a href="#boende/gastlagenheter"><span><span class="t">Gästlägenheter</span><span class="d">Två lägenheter, 350 kr per natt</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li><a href="#boende/andrahand"><span><span class="t">Andrahandsuthyrning</span><span class="d">Ansökan via SBC:s portal</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
-          <li><a href="#ny"><span><span class="t">Ny i föreningen</span><span class="d">Bra att veta när du flyttar in</span></span><span class="arrow" aria-hidden="true">→</span></a></li>
-        </ul>
-      </section>
+  <ul class="wrap tasks" aria-label="Vanliga ärenden">
+    <li><a class="task primary lift" href="#kontakt">
+      <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-tool"/></svg></span>
+      <h2>Felanmälan</h2>
+      <p>Fel i lägenheten, trapphuset eller på gården – och vart du vänder dig med andra frågor.</p>
+      <span class="go">Gör en felanmälan <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </a></li>
+    <li><a class="task lift" href="#tvattstuga">
+      <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-washer"/></svg></span>
+      <h2>Tvättstuga</h2>
+      <p>Tvättiden bokas i föreningens bokningsapp.</p>
+      <span class="go">Boka tvättid <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </a></li>
+    <li><a class="task lift" href="#dokument">
+      <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg></span>
+      <h2>Dokument</h2>
+      <p>Föreningens filer, samlade i en delad mapp på Google Drive.</p>
+      <span class="go">Till dokumenten <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </a></li>
+  </ul>
 
-      <section aria-labelledby="h-aktuellt">
-        <h2 id="h-aktuellt">Aktuellt</h2>
-        <ul class="news" id="newsList"></ul>
-        <div class="missing" id="newsEmpty" hidden><strong>Nyheter saknas.</strong> Aktuella nyheter och projekt från nuvarande webbplats läggs in här, med rubrik och datum.</div>
-        <h3 style="margin-top:20px">Facebookgruppen</h3>
-        <p>För kontakt grannar emellan finns Facebookgruppen ”Brf Solgårdarna Stigberget”.</p>
-      </section>
+  <section class="wrap news-sec" id="newsSection" aria-labelledby="h-news" hidden>
+    <h2 class="h2" id="h-news">Aktuellt</h2>
+    <ul class="news" id="newsList"></ul>
+  </section>
+
+  <section class="wrap living" aria-labelledby="h-living">
+    <div class="living-intro">
+      <span class="eyebrow">Boende</span>
+      <h2 class="h2" id="h-living">Bra att veta som boende</h2>
+      <p>Regler, gästlägenheter och annat praktiskt, samlat på ett ställe.</p>
     </div>
-  </div>
+    <ul class="living-list">
+      <li><a href="#boende/trivselregler"><svg class="i" aria-hidden="true"><use href="#i-rules"/></svg><span><strong>Trivselregler</strong><small>Gemensamma regler för alla boende</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#boende/gastlagenheter"><svg class="i" aria-hidden="true"><use href="#i-bed"/></svg><span><strong>Gästlägenheter</strong><small>Två lägenheter, 350 kr per natt</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#boende/andrahand"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg><span><strong>Andrahandsuthyrning</strong><small>Ett år i taget, ansökan via SBC</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#ny"><svg class="i" aria-hidden="true"><use href="#i-box"/></svg><span><strong>Ny i föreningen</strong><small>Bra att veta när du flyttar in</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#fragor"><svg class="i" aria-hidden="true"><use href="#i-help"/></svg><span><strong>Frågor och svar</strong><small>Vanliga frågor från boende</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#kontakt"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><span><strong>Kontakta styrelsen</strong><small>info@solgardarna.se</small></span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+    </ul>
+  </section>
+
+  <section class="community" aria-labelledby="h-community">
+    <div class="wrap">
+      <figure>
+        <img src="bilder/garden-sommar.jpg" alt="Innergården på sommaren med gräsmatta, stenlagd gång och barn som leker vid en studsmatta." loading="lazy">
+      </figure>
+      <div>
+        <span class="eyebrow">Grannar emellan</span>
+        <h2 class="h2" id="h-community">Gården och gemenskapen</h2>
+        <p>För kontakt grannar emellan finns Facebookgruppen <strong>”Brf Solgårdarna Stigberget”</strong>.</p>
+        <ul class="amenities" aria-label="Gemensamma utrymmen">
+          <li>Tvättstuga</li>
+          <li>Två gästlägenheter</li>
+          <li>Cykelförråd</li>
+          <li>Barnvagnsrum</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- ======================= FELANMÄLAN OCH KONTAKT ======================= -->
 <div class="page" id="page-kontakt" data-title="Felanmälan och kontakt">
-  <div class="wrap page-head">
+  <div class="page-hero"><div class="wrap">
+    <ol class="crumbs"><li><a href="#start">Start</a></li><li>Felanmälan och kontakt</li></ol>
     <h1>Felanmälan och kontakt</h1>
-    <p>Välj kontaktväg efter vad ärendet gäller.</p>
-  </div>
-  <div class="wrap">
-    <div class="route urgent">
-      <div><span class="label">Akut</span><h2>Akuta fel</h2></div>
-      <div>
-        <p>Till exempel vattenläcka, stopp i avlopp, strömavbrott i huset eller inbrott i gemensamma utrymmen.</p>
-        <div class="missing"><strong>Uppgift saknas:</strong> telefonnummer för akuta fel (jour) läggs in här.</div>
-      </div>
-    </div>
-    <div class="route">
-      <div><span class="label">Inte akut</span><h2>Felanmälan</h2></div>
-      <div>
-        <p>Fel i lägenheten, trapphuset, tvättstugan eller på gården. Boakt sköter föreningens tekniska förvaltning och fastighetsskötsel.</p>
-        <div class="missing"><strong>Uppgift saknas:</strong> Boakts telefonnummer, e-post eller länk för felanmälan läggs in här.</div>
-      </div>
-    </div>
-    <div class="route">
-      <div><span class="label">Frågor</span><h2>Styrelsen</h2></div>
-      <div>
+    <p class="lead">Välj kontaktväg efter vad ärendet gäller.</p>
+  </div></div>
+  <div class="wrap content">
+    <div class="contacts">
+      <section class="contact first" aria-labelledby="h-fel">
+        <div>
+          <span class="eyebrow">Fel i lägenhet eller hus</span>
+          <h2 id="h-fel">Felanmälan</h2>
+          <p>Boakt sköter föreningens tekniska förvaltning och fastighetsskötsel. Hit anmäler du fel i lägenheten, trapphuset, tvättstugan eller på gården.</p>
+          <p id="felFallback">Vet du inte hur du når Boakt? Mejla styrelsen på <a href="mailto:info@solgardarna.se">info@solgardarna.se</a>.</p>
+        </div>
+        <ul class="ways" id="felWays"></ul>
+      </section>
+
+      <section class="contact" aria-labelledby="h-styrelse">
+        <span class="eyebrow">Frågor om föreningen</span>
+        <h2 id="h-styrelse">Styrelsen</h2>
         <p>Frågor om föreningen, andrahandsuthyrning, gästlägenheterna och annat som rör boendet.</p>
-        <p>E-post: <a href="mailto:info@solgardarna.se">info@solgardarna.se</a></p>
-      </div>
-    </div>
-    <div class="route">
-      <div><span class="label">Ekonomi</span><h2>SBC</h2></div>
-      <div>
+        <ul class="ways">
+          <li><a href="mailto:info@solgardarna.se"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><span>info@solgardarna.se<small>E-post till styrelsen</small></span></a></li>
+        </ul>
+      </section>
+
+      <section class="contact" aria-labelledby="h-sbc">
+        <span class="eyebrow">Ekonomi och ansökningar</span>
+        <h2 id="h-sbc">SBC</h2>
         <p>SBC sköter föreningens ekonomiska förvaltning. Ansökan om andrahandsuthyrning görs via SBC:s portal.</p>
-        <div class="missing"><strong>Uppgift saknas:</strong> SBC:s kontaktuppgifter och länk till portalen läggs in här.</div>
-      </div>
-    </div>
-    <div class="route">
-      <div><span class="label">Post</span><h2>Postadress</h2></div>
-      <div><p>Brf Solgårdarna Stigberget<br>Älghagsgatan 2 C<br>413 17 Göteborg</p></div>
+        <ul class="ways" id="sbcWays"></ul>
+      </section>
+
+      <section class="contact quiet" aria-labelledby="h-post">
+        <span class="eyebrow">Post</span>
+        <h2 id="h-post">Postadress</h2>
+        <p style="color:var(--ink)">Brf Solgårdarna Stigberget<br>Älghagsgatan 2 C<br>413 17 Göteborg</p>
+      </section>
+
+      <section class="contact quiet" aria-labelledby="h-fb">
+        <span class="eyebrow">Grannar emellan</span>
+        <h2 id="h-fb">Facebookgruppen</h2>
+        <p>Gruppen ”Brf Solgårdarna Stigberget” är till för kontakt grannar emellan.</p>
+      </section>
     </div>
   </div>
 </div>
 
 <!-- ======================= REGLER OCH BOENDE ======================= -->
 <div class="page" id="page-boende" data-title="Regler och boende">
-  <div class="wrap page-head">
+  <div class="page-hero"><div class="wrap">
+    <ol class="crumbs"><li><a href="#start">Start</a></li><li>Boende</li></ol>
     <h1>Regler och boende</h1>
-    <p>Regler och praktisk information för dig som bor i föreningen.</p>
-    <nav aria-label="På den här sidan">
-      <ul class="plain">
+    <p class="lead">Regler och praktisk information för dig som bor i föreningen.</p>
+  </div></div>
+  <div class="wrap content with-aside">
+    <nav class="toc" aria-labelledby="h-toc">
+      <h2 id="h-toc">På sidan</h2>
+      <ul>
         <li><a href="#boende/trivselregler">Trivselregler</a></li>
         <li><a href="#boende/andrahand">Andrahandsuthyrning</a></li>
         <li><a href="#boende/gastlagenheter">Gästlägenheter</a></li>
         <li><a href="#boende/utrymmen">Gemensamma utrymmen</a></li>
       </ul>
     </nav>
+    <div class="prose">
+      <section id="trivselregler" aria-labelledby="h-trivsel">
+        <h2 id="h-trivsel">Trivselregler</h2>
+        <p>Föreningens trivselregler gäller alla som bor i husen.</p>
+        <p class="btn-row"><a class="btn outline" id="rulesLink" href="#" target="_blank" rel="noopener">Läs trivselreglerna <svg class="i" aria-hidden="true"><use href="#i-link"/></svg><span class="vh"> (öppnas i ny flik)</span></a></p>
+      </section>
+
+      <section id="andrahand" aria-labelledby="h-andrahand">
+        <h2 id="h-andrahand">Andrahandsuthyrning</h2>
+        <p>Styrelsen godkänner andrahandsuthyrning för ett år i taget. Därefter behöver du lämna in en ny ansökan till styrelsen.</p>
+        <p>Ansökan görs via SBC:s portal. Lämna in den i god tid före den planerade uthyrningen.</p>
+        <div class="callout">
+          <svg class="i" aria-hidden="true"><use href="#i-alert"/></svg>
+          <p><strong>Tänk på:</strong> handläggningstiden kan vara upp till två månader. Inga ansökningar behandlas i juni, juli och augusti. Kommersiell uthyrning, till exempel via Airbnb, är inte tillåten.</p>
+        </div>
+      </section>
+
+      <section id="gastlagenheter" aria-labelledby="h-gast">
+        <h2 id="h-gast">Gästlägenheter</h2>
+        <p>Föreningen har två gästlägenheter. De bokas i tvättstugan, där det också finns mer information.</p>
+        <dl class="spec">
+          <div><dt>Pris</dt><dd>350 kr per natt</dd></div>
+          <div><dt>Längsta hyrtid</dt><dd>7 nätter i följd*</dd></div>
+          <div><dt>Bokning</dt><dd>I tvättstugan</dd></div>
+        </dl>
+        <p class="muted" style="font-size:.92rem;margin-top:-8px">* Om inget annat har avtalats.</p>
+        <div class="rooms">
+          <div class="room">
+            <span class="eyebrow">Källaren</span>
+            <h3>Hjorthagsgatan 3 D</h3>
+            <ul>
+              <li>Dubbelsäng med sängkläder och kuddar</li>
+              <li>Dusch och enkelt pentry</li>
+              <li>Toalett i källarkorridoren utanför lägenheten</li>
+            </ul>
+          </div>
+          <div class="room">
+            <span class="eyebrow">Källaren</span>
+            <h3>Älghagsgatan 4 A</h3>
+            <ul>
+              <li>Bäddsoffa för två personer, sängkläder och kuddar</li>
+              <li>Toalett och pentry</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="utrymmen" aria-labelledby="h-utrymmen">
+        <h2 id="h-utrymmen">Gemensamma utrymmen</h2>
+        <ul>
+          <li>Tvättstuga – se <a href="#tvattstuga">Tvättstuga</a></li>
+          <li>Två gästlägenheter</li>
+          <li>Cykelförråd</li>
+          <li>Barnvagnsrum</li>
+        </ul>
+      </section>
+    </div>
   </div>
-
-  <section class="wrap block" id="trivselregler" aria-labelledby="h-trivsel">
-    <h2 id="h-trivsel">Trivselregler</h2>
-    <div class="missing"><strong>Text saknas:</strong> föreningens trivselregler från nuvarande webbplats läggs in här.</div>
-  </section>
-
-  <section class="wrap block" id="andrahand" aria-labelledby="h-andrahand">
-    <h2 id="h-andrahand">Andrahandsuthyrning</h2>
-    <p>Styrelsen godkänner andrahandsuthyrning för ett år i taget. Därefter behöver du lämna in en ny ansökan till styrelsen.</p>
-    <p>Ansökan görs via SBC:s portal. Lämna in den i god tid före den planerade uthyrningen.</p>
-    <div class="notice">
-      <p><strong>Tänk på:</strong> handläggningstiden kan vara upp till två månader. Inga ansökningar behandlas i juni, juli och augusti. Kommersiell uthyrning, till exempel via Airbnb, är inte tillåten.</p>
-    </div>
-  </section>
-
-  <section class="wrap block" id="gastlagenheter" aria-labelledby="h-gast">
-    <h2 id="h-gast">Gästlägenheter</h2>
-    <p>Föreningen har två gästlägenheter. De bokas i tvättstugan, där det också finns mer information.</p>
-    <dl class="facts" style="margin-bottom:20px">
-      <dt>Pris</dt><dd>350 kr per natt</dd>
-      <dt>Längsta hyrtid</dt><dd>7 nätter i följd, om inget annat har avtalats</dd>
-      <dt>Bokning</dt><dd>I tvättstugan</dd>
-    </dl>
-    <div class="cols">
-      <div>
-        <h3>Hjorthagsgatan 3 D, källaren</h3>
-        <ul class="plain">
-          <li>Dubbelsäng med sängkläder och kuddar</li>
-          <li>Dusch och enkelt pentry</li>
-          <li>Toalett i källarkorridoren utanför lägenheten</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Älghagsgatan 4 A, källaren</h3>
-        <ul class="plain">
-          <li>Bäddsoffa för två personer, sängkläder och kuddar</li>
-          <li>Toalett och pentry</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap block" id="utrymmen" aria-labelledby="h-utrymmen">
-    <h2 id="h-utrymmen">Gemensamma utrymmen</h2>
-    <ul class="plain">
-      <li>Tvättstuga – se <a href="#tvattstuga">Tvättstuga</a></li>
-      <li>Två gästlägenheter</li>
-      <li>Cykelförråd</li>
-      <li>Barnvagnsrum</li>
-    </ul>
-  </section>
 </div>
 
 <!-- ======================= TVÄTTSTUGA ======================= -->
 <div class="page" id="page-tvattstuga" data-title="Tvättstuga">
-  <div class="wrap page-head">
+  <div class="page-hero"><div class="wrap">
+    <ol class="crumbs"><li><a href="#start">Start</a></li><li>Tvättstuga</li></ol>
     <h1>Tvättstuga</h1>
-    <p>Tvättiden bokas i föreningens bokningsapp.</p>
-  </div>
-  <div class="wrap block">
-    <div id="laundryLinks">
-      <div class="btn-row" id="laundryButtons"></div>
+    <p class="lead">Tvättiden bokas i föreningens bokningsapp.</p>
+  </div></div>
+  <div class="wrap content two">
+    <div>
+      <div class="panel">
+        <h2>Boka tvättid</h2>
+        <p class="muted" id="laundryText">Öppna bokningen i webbläsaren eller ladda ner appen till mobilen.</p>
+        <div class="btn-row" id="laundryButtons"></div>
+        <p class="muted" id="laundryFallback" hidden style="margin:0">Frågor om tvättstugan eller bokningen? Mejla styrelsen på <a href="mailto:info@solgardarna.se">info@solgardarna.se</a>.</p>
+      </div>
+      <div class="embed" id="laundryEmbedWrap" hidden><iframe id="laundryEmbed" title="Bokning av tvättid"></iframe></div>
     </div>
-    <div class="missing" id="laundryMissing" hidden><strong>Uppgift saknas:</strong> namn på bokningsappen och länkar till bokningen, App Store och Google Play läggs in här.</div>
-    <p class="muted small">Gästlägenheterna bokas också i tvättstugan.</p>
-  </div>
-  <div class="wrap block" id="laundryEmbedWrap" hidden>
-    <h2>Bokning</h2>
-    <div class="embed"><iframe id="laundryEmbed" title="Bokning av tvättid"></iframe></div>
+    <aside class="side-note" aria-labelledby="h-gast-note">
+      <h2 id="h-gast-note">Gästlägenheterna</h2>
+      <p>Föreningens två gästlägenheter bokas också i tvättstugan.</p>
+      <p><a href="#boende/gastlagenheter">Om gästlägenheterna</a></p>
+    </aside>
   </div>
 </div>
 
 <!-- ======================= DOKUMENT ======================= -->
 <div class="page" id="page-dokument" data-title="Dokument">
-  <div class="wrap page-head">
+  <div class="page-hero"><div class="wrap">
+    <ol class="crumbs"><li><a href="#start">Start</a></li><li>Dokument</li></ol>
     <h1>Dokument</h1>
-    <p>Föreningens filer finns i en delad mapp på Google Drive. Innehållet visas nedan och uppdateras automatiskt när styrelsen lägger upp nya filer.</p>
-  </div>
-  <div class="wrap block">
-    <ul class="linklist" id="docList" style="margin-bottom:20px" hidden></ul>
-    <div class="btn-row"><a class="btn secondary" id="driveBtn" href="#" target="_blank" rel="noopener">Öppna mappen i Google Drive<span class="visually-hidden"> (öppnas i ny flik)</span></a></div>
-    <div class="embed" id="driveEmbedWrap"><iframe id="driveEmbed" title="Föreningens dokument i Google Drive" loading="lazy"></iframe></div>
-    <div class="missing" id="driveMissing" hidden><strong>Uppgift saknas:</strong> länk till föreningens delade mapp i Google Drive läggs in här. Mappen visas då direkt på sidan.</div>
+    <p class="lead">Föreningens filer finns i en delad mapp på Google Drive och uppdateras när styrelsen lägger upp något nytt.</p>
+  </div></div>
+  <div class="wrap content">
+    <ul class="docs" id="docList" hidden></ul>
+    <div id="driveBlock" hidden>
+      <p class="btn-row"><a class="btn" id="driveBtn" href="#" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-folder"/></svg>Öppna mappen i Google Drive<span class="vh"> (öppnas i ny flik)</span></a></p>
+      <div class="embed"><iframe id="driveEmbed" title="Föreningens dokument i Google Drive" loading="lazy"></iframe></div>
+    </div>
+    <div class="panel" id="driveFallback" hidden style="max-width:720px">
+      <h2>Behöver du ett dokument?</h2>
+      <p style="margin:0" class="muted">Mejla styrelsen på <a href="mailto:info@solgardarna.se">info@solgardarna.se</a>.</p>
+    </div>
   </div>
 </div>
 
 <!-- ======================= NY I FÖRENINGEN ======================= -->
 <div class="page" id="page-ny" data-title="Ny i föreningen">
-  <div class="wrap page-head">
+  <div class="page-hero"><div class="wrap">
+    <ol class="crumbs"><li><a href="#start">Start</a></li><li>Boende</li></ol>
     <h1>Ny i föreningen</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <p class="missing"><strong>Exempeltext:</strong> innehållet på den här sidan är platshållare och ska ersättas.</p>
-  </div>
-  <div class="wrap block">
-    <div class="cols">
-      <section aria-labelledby="h-checklista">
-        <h2 id="h-checklista">Att göra vid inflyttning</h2>
-        <p class="muted small" id="checkCount" aria-live="polite"></p>
-        <ul class="checklist" id="checklist">
-          <li><label><input type="checkbox"><span><strong>Lorem ipsum dolor</strong><br>Sit amet, consectetur adipiscing elit.</span></label></li>
-          <li><label><input type="checkbox"><span><strong>Sed do eiusmod</strong><br>Tempor incididunt ut labore et dolore magna.</span></label></li>
-          <li><label><input type="checkbox"><span><strong>Ut enim ad minim</strong><br>Veniam, quis nostrud exercitation ullamco.</span></label></li>
-          <li><label><input type="checkbox"><span><strong>Duis aute irure</strong><br>Dolor in reprehenderit in voluptate velit.</span></label></li>
-          <li><label><input type="checkbox"><span><strong>Excepteur sint</strong><br>Occaecat cupidatat non proident.</span></label></li>
-        </ul>
-      </section>
-      <section aria-labelledby="h-bra">
-        <h2 id="h-bra">Bra att veta</h2>
-        <h3>Lorem ipsum</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <h3>Dolor sit amet</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <h3>Consectetur adipiscing</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Se även <a href="#fragor">Frågor och svar</a> och <a href="#boende">Regler och boende</a>.</p>
-      </section>
-    </div>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div></div>
+  <div class="wrap content two">
+    <section aria-labelledby="h-steps">
+      <h2 class="h2" id="h-steps" style="font-size:1.9rem;margin-bottom:8px">Att göra vid inflyttning</h2>
+      <p class="muted" id="checkCount" aria-live="polite"></p>
+      <ol class="steps" id="checklist">
+        <li><label><span><strong>Lorem ipsum dolor</strong><span class="d">Sit amet, consectetur adipiscing elit.</span></span><input type="checkbox"></label></li>
+        <li><label><span><strong>Sed do eiusmod</strong><span class="d">Tempor incididunt ut labore et dolore magna.</span></span><input type="checkbox"></label></li>
+        <li><label><span><strong>Ut enim ad minim</strong><span class="d">Veniam, quis nostrud exercitation ullamco.</span></span><input type="checkbox"></label></li>
+        <li><label><span><strong>Duis aute irure</strong><span class="d">Dolor in reprehenderit in voluptate velit.</span></span><input type="checkbox"></label></li>
+        <li><label><span><strong>Excepteur sint</strong><span class="d">Occaecat cupidatat non proident.</span></span><input type="checkbox"></label></li>
+      </ol>
+    </section>
+    <aside class="side-note" aria-labelledby="h-bra">
+      <h2 id="h-bra">Bra att veta</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+      <p>Se även <a href="#boende">Regler och boende</a> och <a href="#fragor">Frågor och svar</a>.</p>
+    </aside>
   </div>
 </div>
 
 <!-- ======================= FRÅGOR OCH SVAR ======================= -->
 <div class="page" id="page-fragor" data-title="Frågor och svar">
-  <div class="wrap page-head">
+  <div class="page-hero"><div class="wrap">
+    <ol class="crumbs"><li><a href="#start">Start</a></li><li>Boende</li></ol>
     <h1>Frågor och svar</h1>
-    <p>Svar på vanliga frågor från boende.</p>
-    <p class="missing"><strong>Exempeltext:</strong> frågorna och svaren nedan är platshållare och ska ersättas.</p>
-  </div>
-  <div class="wrap block">
-    <div class="field">
-      <label for="faqSearch">Sök bland frågorna</label>
-      <input id="faqSearch" type="search" autocomplete="off">
+    <p class="lead">Svar på vanliga frågor från boende.</p>
+  </div></div>
+  <div class="wrap content">
+    <div class="faq-tools">
+      <div class="field">
+        <label for="faqSearch">Sök bland frågorna</label>
+        <div class="search"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input id="faqSearch" type="search" autocomplete="off"></div>
+      </div>
+      <fieldset class="filter">
+        <legend>Visa ämne</legend>
+        <div class="chips" id="faqFilter"></div>
+      </fieldset>
     </div>
-    <fieldset class="filter">
-      <legend>Visa ämne</legend>
-      <div class="filter-opts" id="faqFilter"></div>
-    </fieldset>
-    <p class="muted small" id="faqStatus" aria-live="polite"></p>
+    <p class="muted" id="faqStatus" aria-live="polite" style="font-size:.95rem"></p>
     <div class="faq" id="faqList"></div>
-    <p style="margin-top:20px">Hittar du inte svaret? Mejla styrelsen på <a href="mailto:info@solgardarna.se">info@solgardarna.se</a>.</p>
+    <p style="margin-top:32px">Hittar du inte svaret? Mejla styrelsen på <a href="mailto:info@solgardarna.se">info@solgardarna.se</a>.</p>
   </div>
 </div>
 
 <!-- ======================= OM FÖRENINGEN ======================= -->
 <div class="page" id="page-om" data-title="Om föreningen">
-  <div class="wrap page-head">
+  <div class="page-hero"><div class="wrap">
+    <ol class="crumbs"><li><a href="#start">Start</a></li><li>Om föreningen</li></ol>
     <h1>Om föreningen</h1>
-    <p>Solgårdarna Stigberget ligger vid Slottsskogens kant i Gamla Masthugget i Göteborg.</p>
-  </div>
-  <div class="wrap block">
+    <p class="lead">Solgårdarna Stigberget ligger vid Slottsskogens kant i Gamla Masthugget i Göteborg.</p>
+  </div></div>
+  <div class="wrap content">
     <dl class="facts">
-      <dt>Lägenheter</dt><dd>96</dd>
-      <dt>Hus</dt><dd>Älghagsgatan 2 och 4, Hjorthagsgatan 3 och 5</dd>
-      <dt>Bildad</dt><dd>2004</dd>
-      <dt>Ekonomisk förvaltning</dt><dd>SBC</dd>
-      <dt>Teknisk förvaltning</dt><dd>Boakt, som också sköter fastighetsskötseln</dd>
-      <dt>Gemensamt</dt><dd>Tvättstuga, två gästlägenheter, cykelförråd och barnvagnsrum</dd>
-      <dt>Organisationsnummer</dt><dd>769611-1108</dd>
+      <div><dt>Lägenheter</dt><dd>96</dd></div>
+      <div><dt>Hus</dt><dd>4</dd></div>
+      <div><dt>Bildad</dt><dd>2004</dd></div>
+      <div><dt>Organisationsnummer</dt><dd>769611-1108</dd></div>
     </dl>
-  </div>
-  <section class="wrap block" aria-labelledby="h-garden">
-    <h2 id="h-garden">Gården och husen</h2>
-    <div class="photos">
-      <figure><img src="bilder/garden-sommar.jpg" alt="Innergården på sommaren med gräsmatta, stenlagd gång och barn som leker vid en studsmatta." loading="lazy"><figcaption>Innergården på sommaren.</figcaption></figure>
-      <figure><img src="bilder/garden-host.jpg" alt="Planteringar framför ett ljusgrått hus med röda balkonger en höstdag." loading="lazy"><figcaption>Planteringarna en höstdag.</figcaption></figure>
-      <figure><img src="bilder/garden-vinter.jpg" alt="Gården med sandlåda, cykelställ och berget mellan husen en vårvinterdag." loading="lazy" style="object-position:50% 45%"><figcaption>Gården och berget, vårvinter.</figcaption></figure>
+    <div class="about">
+      <div>
+        <h2 class="h2">Husen och förvaltningen</h2>
+        <dl class="list">
+          <div><dt>Adresser</dt><dd>Älghagsgatan 2 och 4, Hjorthagsgatan 3 och 5</dd></div>
+          <div><dt>Ekonomisk förvaltning</dt><dd>SBC</dd></div>
+          <div><dt>Teknisk förvaltning</dt><dd>Boakt, som också sköter fastighetsskötseln</dd></div>
+          <div><dt>Gemensamt</dt><dd>Tvättstuga, två gästlägenheter, cykelförråd och barnvagnsrum</dd></div>
+        </dl>
+      </div>
+      <div class="gallery">
+        <figure><img src="bilder/garden-host.jpg" alt="Planteringar framför ett ljusgrått hus med röda balkonger och tegeltak en höstdag." loading="lazy"><figcaption>Planteringarna en höstdag.</figcaption></figure>
+        <figure><img src="bilder/garden-sommar.jpg" alt="Innergården på sommaren med gräsmatta och stenlagd gång." loading="lazy"><figcaption>Innergården på sommaren.</figcaption></figure>
+        <figure><img src="bilder/garden-vinter.jpg" alt="Gården med sandlåda, cykelställ och berget mellan husen en vårvinterdag." loading="lazy" style="object-position:50% 45%"><figcaption>Gården och berget, vårvinter.</figcaption></figure>
+      </div>
     </div>
-  </section>
+  </div>
 </div>
 
 </main>
 
 <footer class="site">
-  <div class="wrap cols">
-    <div>
-      <h2>Brf Solgårdarna Stigberget</h2>
-      <p>Postadress: Älghagsgatan 2 C, 413 17 Göteborg</p>
-      <p>Organisationsnummer 769611-1108</p>
+  <div class="wrap top">
+    <div class="brand">
+      <a class="wordmark" href="#start" aria-label="Brf Solgårdarna Stigberget, till startsidan"><span class="wm-name">Solgårdarna</span><span class="wm-sub">Brf Stigberget</span></a>
+      <address>Älghagsgatan 2 och 4<br>Hjorthagsgatan 3 och 5<br>Gamla Masthugget, Göteborg</address>
     </div>
     <div>
       <h2>Kontakt</h2>
       <ul>
-        <li><a href="#kontakt">Felanmälan och kontakt</a></li>
+        <li><a class="report" href="#kontakt"><svg class="i" aria-hidden="true"><use href="#i-tool"/></svg>Felanmälan</a></li>
         <li><a href="mailto:info@solgardarna.se">info@solgardarna.se</a></li>
+        <li>Postadress:<br>Älghagsgatan 2 C<br>413 17 Göteborg</li>
       </ul>
     </div>
     <div>
-      <h2>Genvägar</h2>
+      <h2>Boende</h2>
       <ul>
         <li><a href="#tvattstuga">Tvättstuga</a></li>
-        <li><a href="#dokument">Dokument</a></li>
         <li><a href="#boende/trivselregler">Trivselregler</a></li>
+        <li><a href="#boende/gastlagenheter">Gästlägenheter</a></li>
+        <li><a href="#ny">Ny i föreningen</a></li>
       </ul>
     </div>
+    <div>
+      <h2>Föreningen</h2>
+      <ul>
+        <li><a href="#dokument">Dokument</a></li>
+        <li><a href="#om">Om föreningen</a></li>
+        <li><a href="#fragor">Frågor och svar</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>Bostadsrättsföreningen Solgårdarna Stigberget</span>
+    <span>Org.nr 769611-1108</span>
   </div>
 </footer>
 
 <script>
 /* =====================================================================
-   INSTÄLLNINGAR – fyll i här. Tomma fält visas som "Uppgift saknas".
+   INSTÄLLNINGAR – fyll i här. Tomma fält döljs på sidan.
    ===================================================================== */
 const CONFIG = {
-  // Nyheter visas på startsidan, senaste först.
+  // Nyheter visas på startsidan (de tre senaste). Sektionen döljs när listan är tom.
   // Exempel: { date: "2026-09-01", title: "Rubrik", text: "Kort text." }
   news: [],
 
-  // Google Drive: dela mappen som "Alla med länken kan visa" och klistra in
-  // mappens ID (delen efter /folders/ i adressen).
-  driveFolderId: "",
+  // Felanmälan till Boakt och akuta fel. Tomma fält visas inte.
+  boakt: { phone: "", email: "", url: "" },
+  urgentPhone: "",       // jourtelefon för akuta fel
 
-  // Enskilda dokument som ska lyftas fram (valfritt).
-  // Exempel: { title: "Stadgar", format: "PDF", url: "https://drive.google.com/..." }
+  // SBC:s portal (ansökningar, avgifter)
+  sbcUrl: "",
+
+  // Trivselregler – länk till nuvarande sida tills texten flyttats hit.
+  rulesUrl: "https://www.solgardarna.se/meny/medlemsinfo/trivselregler",
+
+  // Google Drive: dela mappen som "Alla med länken kan visa" och klistra in mappens ID.
+  driveFolderId: "",
+  // Enskilda dokument att lyfta fram. Exempel: { title: "Stadgar", format: "PDF", url: "https://..." }
   documents: [],
 
   // Tvättbokning
-  laundryAppName: "",   // t.ex. appens namn
-  laundryUrl: "",       // webbversion av bokningen
-  laundryIos: "",       // App Store
-  laundryAndroid: "",   // Google Play
-  laundryEmbed: false,  // true om bokningen får visas inbäddad på sidan
+  laundryAppName: "",
+  laundryUrl: "",
+  laundryIos: "",
+  laundryAndroid: "",
+  laundryEmbed: false,
 };
 
 /* Frågor och svar – exempelinnehåll (lorem ipsum) */
@@ -582,68 +948,113 @@ const FAQ = [
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const icon = name => `<svg class="i" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+const newTab = '<span class="vh"> (öppnas i ny flik)</span>';
+const BOENDE = ["boende", "ny", "fragor"];
 
 // --- Navigering ---
 const pages = [...document.querySelectorAll(".page")];
-const navLinks = [...document.querySelectorAll("nav.main a")];
-const nav = $("nav"), menuBtn = $("menuBtn"), main = $("innehall");
+const navLinks = [...document.querySelectorAll("nav.primary a, #mobilePanel a")];
+const ddBtn = document.querySelector(".dd-btn"), ddPanel = $("dd-boende");
+const menuBtn = $("menuBtn"), mobilePanel = $("mobilePanel");
 let firstRoute = true;
+
+function setDropdown(open) { ddBtn.setAttribute("aria-expanded", String(open)); ddPanel.hidden = !open; }
+function setMenu(open) {
+  menuBtn.setAttribute("aria-expanded", String(open)); mobilePanel.hidden = !open;
+  menuBtn.querySelector("use").setAttribute("href", open ? "#i-close" : "#i-menu");
+  menuBtn.querySelector("span").textContent = open ? "Stäng" : "Meny";
+  menuBtn.setAttribute("aria-label", open ? "Stäng menyn" : "Meny");
+}
 
 function route() {
   const [name, sub] = (location.hash.slice(1) || "start").split("/");
   const page = $("page-" + name) || $("page-start");
   const key = page.id.slice(5);
+  const full = sub ? key + "/" + sub : key;
   pages.forEach(p => p.classList.toggle("active", p === page));
-  navLinks.forEach(a => a.getAttribute("href") === "#" + key ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  navLinks.forEach(a => a.getAttribute("href").slice(1) === full ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  ddBtn.classList.toggle("current", BOENDE.includes(key));
   document.title = (page.dataset.title ? page.dataset.title + " – " : "") + "Brf Solgårdarna Stigberget";
-  nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false");
+  setDropdown(false); setMenu(false);
   const target = sub && $(sub);
   if (target) target.scrollIntoView();
   else window.scrollTo(0, 0);
-  if (!firstRoute) (page.querySelector("h1") || main).focus?.({ preventScroll: !!target });
+  if (!firstRoute) { const h = page.querySelector("h1"); if (h) h.focus({ preventScroll: true }); }
   firstRoute = false;
 }
 document.querySelectorAll(".page h1").forEach(h => h.setAttribute("tabindex", "-1"));
 window.addEventListener("hashchange", route);
-menuBtn.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  menuBtn.setAttribute("aria-expanded", String(open));
+// Klick på en länk till den adress man redan står på ska ändå stänga menyer och scrolla
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (a && a.getAttribute("href") === (location.hash || "#start")) { e.preventDefault(); route(); }
+  if (!e.target.closest(".dd")) setDropdown(false);
+});
+ddBtn.addEventListener("click", () => setDropdown(ddPanel.hidden));
+menuBtn.addEventListener("click", () => setMenu(mobilePanel.hidden));
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (!ddPanel.hidden) { setDropdown(false); ddBtn.focus(); }
+  if (!mobilePanel.hidden) { setMenu(false); menuBtn.focus(); }
+});
+document.querySelector(".dd").addEventListener("focusout", e => {
+  if (!e.currentTarget.contains(e.relatedTarget)) setDropdown(false);
 });
 
 // --- Nyheter ---
 const news = [...CONFIG.news].sort((a, b) => b.date.localeCompare(a.date));
-const fmtDate = d => new Date(d + "T12:00").toLocaleDateString("sv-SE", { day: "numeric", month: "long", year: "numeric" });
-$("newsList").innerHTML = news.map(n =>
-  `<li><time datetime="${esc(n.date)}">${fmtDate(n.date)}</time><h3>${esc(n.title)}</h3>${n.text ? `<p>${esc(n.text)}</p>` : ""}</li>`).join("");
-$("newsList").hidden = !news.length;
-$("newsEmpty").hidden = !!news.length;
+if (news.length) {
+  const fmtDate = d => new Date(d + "T12:00").toLocaleDateString("sv-SE", { day: "numeric", month: "long", year: "numeric" });
+  $("newsList").innerHTML = news.slice(0, 3).map(n =>
+    `<li><time datetime="${esc(n.date)}">${fmtDate(n.date)}</time><h3>${esc(n.title)}</h3>${n.text ? `<p>${esc(n.text)}</p>` : ""}</li>`).join("");
+  $("newsSection").hidden = false;
+}
 
-// --- Dokument / Google Drive ---
-const newTab = '<span class="visually-hidden"> (öppnas i ny flik)</span>';
+// --- Kontaktvägar ---
+const tel = n => "tel:" + n.replace(/[^\d+]/g, "");
+const way = (href, ico, text, sub, ext) =>
+  `<li><a href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""}>${icon(ico)}<span>${esc(text)}<small>${esc(sub)}</small></span>${ext ? newTab : ""}</a></li>`;
+const fel = [];
+if (CONFIG.urgentPhone) fel.push(way(tel(CONFIG.urgentPhone), "alert", CONFIG.urgentPhone, "Akuta fel, till exempel vattenläcka"));
+if (CONFIG.boakt.url) fel.push(way(CONFIG.boakt.url, "link", "Felanmälan hos Boakt", "Formulär på webben", true));
+if (CONFIG.boakt.phone) fel.push(way(tel(CONFIG.boakt.phone), "phone", CONFIG.boakt.phone, "Boakt, fel som inte är akuta"));
+if (CONFIG.boakt.email) fel.push(way("mailto:" + CONFIG.boakt.email, "mail", CONFIG.boakt.email, "E-post till Boakt"));
+if (fel.length) { $("felWays").innerHTML = fel.join(""); $("felFallback").hidden = true; }
+else { $("felWays").hidden = true; $("felWays").parentElement.classList.add("solo"); }
+if (CONFIG.sbcUrl) $("sbcWays").innerHTML = way(CONFIG.sbcUrl, "link", "SBC:s portal", "Ansökningar och avgifter", true);
+else $("sbcWays").hidden = true;
+
+$("rulesLink").href = CONFIG.rulesUrl;
+
+// --- Dokument ---
+if (CONFIG.documents.length) {
+  $("docList").innerHTML = CONFIG.documents.map(d =>
+    `<li><a href="${esc(d.url)}" target="_blank" rel="noopener">${icon("doc")}<span class="t">${esc(d.title)}${newTab}</span>${d.format ? `<span class="fmt">${esc(d.format)}</span>` : ""}</a></li>`).join("");
+  $("docList").hidden = false;
+}
 if (CONFIG.driveFolderId) {
   $("driveBtn").href = "https://drive.google.com/drive/folders/" + encodeURIComponent(CONFIG.driveFolderId);
   $("driveEmbed").src = "https://drive.google.com/embeddedfolderview?id=" + encodeURIComponent(CONFIG.driveFolderId) + "#list";
-} else {
-  $("driveBtn").parentElement.hidden = true;
-  $("driveEmbedWrap").hidden = true;
-  $("driveMissing").hidden = false;
-}
-if (CONFIG.documents.length) {
-  $("docList").innerHTML = CONFIG.documents.map(d =>
-    `<li><a href="${esc(d.url)}" target="_blank" rel="noopener"><span class="t">${esc(d.title)}${newTab}</span>${d.format ? `<span class="fmt">${esc(d.format)}</span>` : ""}</a></li>`).join("");
-  $("docList").hidden = false;
+  $("driveBlock").hidden = false;
+} else if (!CONFIG.documents.length) {
+  $("driveFallback").hidden = false;
 }
 
 // --- Tvättstuga ---
 const laundry = [
-  [CONFIG.laundryUrl, "Boka tvättid" + (CONFIG.laundryAppName ? " i " + CONFIG.laundryAppName : ""), "btn"],
-  [CONFIG.laundryIos, "Hämta appen i App Store", "btn secondary"],
-  [CONFIG.laundryAndroid, "Hämta appen i Google Play", "btn secondary"],
+  [CONFIG.laundryUrl, "Boka tvättid" + (CONFIG.laundryAppName ? " i " + CONFIG.laundryAppName : ""), "btn", "washer"],
+  [CONFIG.laundryIos, "App Store", "btn outline", "link"],
+  [CONFIG.laundryAndroid, "Google Play", "btn outline", "link"],
 ].filter(([url]) => url);
-$("laundryButtons").innerHTML = laundry.map(([url, text, cls]) =>
-  `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}${newTab}</a>`).join("");
-$("laundryLinks").hidden = !laundry.length;
-$("laundryMissing").hidden = !!laundry.length;
+if (laundry.length) {
+  $("laundryButtons").innerHTML = laundry.map(([url, text, cls, ico]) =>
+    `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${icon(ico)}${esc(text)}${newTab}</a>`).join("");
+} else {
+  $("laundryText").hidden = true;
+  $("laundryButtons").hidden = true;
+  $("laundryFallback").hidden = false;
+}
 if (CONFIG.laundryEmbed && CONFIG.laundryUrl) {
   $("laundryEmbedWrap").hidden = false;
   $("laundryEmbed").src = CONFIG.laundryUrl;
@@ -654,7 +1065,7 @@ let faqCat = "Alla";
 const cats = ["Alla", ...new Set(FAQ.map(f => f.cat))];
 $("faqFilter").innerHTML = cats.map(c => `<button type="button" aria-pressed="${c === "Alla"}">${esc(c)}</button>`).join("");
 $("faqList").innerHTML = FAQ.map(f =>
-  `<details data-cat="${esc(f.cat)}"><summary><span>${esc(f.q)}<span class="cat">${esc(f.cat)}</span></span><span class="sign" aria-hidden="true"></span></summary><div class="answer"><p>${esc(f.a)}</p></div></details>`).join("");
+  `<details data-cat="${esc(f.cat)}"><summary><span><strong>${esc(f.q)}</strong><small>${esc(f.cat)}</small></span><span class="tog" aria-hidden="true">${icon("chev")}</span></summary><div class="answer"><p>${esc(f.a)}</p></div></details>`).join("");
 function filterFaq() {
   const q = $("faqSearch").value.trim().toLowerCase();
   let shown = 0;
@@ -675,11 +1086,12 @@ filterFaq();
 
 // --- Checklista (sparas bara i den egna webbläsaren) ---
 const boxes = [...document.querySelectorAll("#checklist input")];
+boxes.forEach(b => b.setAttribute("aria-label", "Klart: " + b.closest("label").querySelector("strong").textContent));
 let saved = [];
 try { saved = JSON.parse(localStorage.getItem("checklist") || "[]"); } catch (e) {}
 boxes.forEach((b, i) => { b.checked = !!saved[i]; b.addEventListener("change", updateChecklist); });
 function updateChecklist() {
-  $("checkCount").textContent = `${boxes.filter(b => b.checked).length} av ${boxes.length} avbockade. Sparas bara i din webbläsare.`;
+  $("checkCount").textContent = `${boxes.filter(b => b.checked).length} av ${boxes.length} klara. Det du bockar av sparas i din webbläsare.`;
   try { localStorage.setItem("checklist", JSON.stringify(boxes.map(b => b.checked))); } catch (e) {}
 }
 updateChecklist();
